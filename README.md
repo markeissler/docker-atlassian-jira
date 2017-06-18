@@ -1,6 +1,6 @@
 # Atlassian Jira for Docker
 
-__docker-atlassian-jira__ provides [Atlassian Jira](https://www.atlassian.com/software/jira) in a [docker]()
+__docker-atlassian-jira__ provides [Atlassian Jira](https://www.atlassian.com/software/jira) in a [docker](https://www.docker.com/)
 container to support issue and project tracking for software teams.
 
 >BETA: docker-atlassian-jira is currently in pre-release. That doesn't mean it's not ready for production, it just
@@ -36,6 +36,27 @@ It may be desirable to configure data persistence over NFS, in which case NFS vo
 described in the [Data Persistence](#data-persistence) section above. NFS support requires that the underlying Docker
 host supports NFS; if deploying to a [Docker swarm](https://docs.docker.com/engine/swarm/) a potential __boot2docker.iso__
 candidate that supports NFS is the [boot2docker-nfs.iso](https://github.com/markeissler/boot2docker-nfs).
+
+### SSL Support
+
+You can enable SSL by simply copying a PKCS12 format certificate (`certificate.p12`) into the `JIRA_HOME` directory
+(`/var/atlassian/jira`) and then restarting the container. The PKCS12 file format has been selected to make it easier to
+generate certificates using `openssl`.
+
+An example `openssl` command that will create a PKCS12 file from a private key (`server_key.pem`) and public certficate
+(`server_cert.pem`) follows:
+
+```sh
+prompt> openssl pkcs12 -export -in server_cert.pem \
+    -inkey server_key.pem -out certificate.p12 \
+    -passout pass:changeit -name "jira"
+```
+
+On container startup, the PCKS12 format certificate.p12 file will be converted and stored in the system JKS keystore.
+
+## Troubleshooting
+
+For general troubleshooting information check the [Troubleshoot](troubleshoot.md) document.
 
 ## Authors
 
