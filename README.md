@@ -54,6 +54,10 @@ prompt> openssl pkcs12 -export -in server_cert.pem \
 
 On container startup, the PCKS12 format certificate.p12 file will be converted and stored in the system JKS keystore.
 
+## Troubleshooting
+
+For general troubleshooting information check the [Troubleshoot](troubleshoot.md) document.
+
 ## Authors
 
 __docker-atlassian-jira__ is the work of __Mark Eissler__.
