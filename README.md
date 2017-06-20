@@ -30,12 +30,23 @@ As configured, data on the following volumes will be created to persist data bet
 | /var/atlassian/jira                     | application configuration |
 | /opt/atlassian/jira/logs                | runtime logs              |
 
+<a name="data-persistence-nfs"></a>
+
 ### Data Persistence over NFS
 
 It may be desirable to configure data persistence over NFS, in which case NFS volumes are mounted at the locations
 described in the [Data Persistence](#data-persistence) section above. NFS support requires that the underlying Docker
 host supports NFS; if deploying to a [Docker swarm](https://docs.docker.com/engine/swarm/) a potential __boot2docker.iso__
 candidate that supports NFS is the [boot2docker-nfs.iso](https://github.com/markeissler/boot2docker-nfs).
+
+Certain JIRA directories are moved out of the application configuration directory and into an ephemeral runtime storage
+area to prevent data corruption startup failures. Specfically, cache directories are moved so that clean re-starts
+are possible; often, when an instance dies Tomcat will not be shutdown cleanly and data corruption is likely to occur
+with regard to the _felix_ plugin cache).
+
+| Directory | Purpose                                                    |
+|:----------|:-----------------------------------------------------------|
+| /var/atlassian/jira_runtime   | runtime storage for caches and indexes |
 
 ### SSL Support
 
@@ -53,6 +64,14 @@ prompt> openssl pkcs12 -export -in server_cert.pem \
 ```
 
 On container startup, the PCKS12 format certificate.p12 file will be converted and stored in the system JKS keystore.
+
+## Docker Swarm Support
+
+While __docker-atlassian-jira__ does not support multi-node clustering it does support deployment to a cluster with a
+failover configuration (where only a single JIRA instance is active at a any time).
+
+This configuration requires that [Data Persistence over NFS](#data-persistence-nfs) has been configured to share JIRA
+configuration information among replicated instanced.
 
 ## Troubleshooting
 
