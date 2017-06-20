@@ -3,6 +3,7 @@ MAINTAINER Mark Eissler
 
 # Configuration variables.
 ENV JIRA_HOME     /var/atlassian/jira
+ENV JIRA_RUNTIME  /var/atlassian/jira_runtime
 ENV JIRA_INSTALL  /opt/atlassian/jira
 ENV JIRA_VERSION  7.3.7
 
@@ -41,6 +42,27 @@ RUN set -x \
     && echo -e                 "\njira.home=$JIRA_HOME" >> "${JIRA_INSTALL}/atlassian-jira/WEB-INF/classes/jira-application.properties" \
     && touch -d "@0"           "${JIRA_INSTALL}/conf/server.xml" \
     && chown daemon:daemon     "${JAVA_CACERTS}"
+
+# Support Swarm and NFS by moving caches to local (ephemeral) storage.
+#
+#   JIRA_HOME/caches/indexes
+#       - lucene indexes, we move all caches to JIRA_RUNTIME
+#
+#   JIRA_HOME/plugins/.osgi-plugins/felix/felix-cache
+#       - felix plugin cache, we want to move just felix-cache but JIRA will overwrite
+#       a symlink on felix-cache so we move all felix to JIRA_RUNTIME
+#
+RUN set -x \
+    && rm -rf                  "${JIRA_HOME}/caches" \
+    && mkdir -p                "${JIRA_HOME}/plugins/.osgi-plugins" \
+    && chmod -R 700            "${JIRA_HOME}" \
+    && chown -R daemon:daemon  "${JIRA_HOME}" \
+    && mkdir -p                "${JIRA_RUNTIME}/caches/indexes" \
+    && mkdir -p                "${JIRA_RUNTIME}/plugins/.osgi-plugins/felix" \
+    && chmod -R 700            "${JIRA_RUNTIME}" \
+    && chown -R daemon:daemon  "${JIRA_RUNTIME}" \
+    && ln -s                   "${JIRA_RUNTIME}/caches" "${JIRA_HOME}/caches" \
+    && ln -s                   "${JIRA_RUNTIME}/plugins/.osgi-plugins/felix" "${JIRA_HOME}/plugins/.osgi-plugins/felix"
 
 # Use the default unprivileged account. This could be considered bad practice
 # on systems where multiple processes end up being executed by 'daemon' but
