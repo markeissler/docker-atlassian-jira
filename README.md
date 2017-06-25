@@ -3,11 +3,11 @@
 __docker-atlassian-jira__ provides [Atlassian Jira](https://www.atlassian.com/software/jira) in a [docker](https://www.docker.com/)
 container to support issue and project tracking for software teams.
 
->BETA: docker-atlassian-jira is currently in pre-release. That doesn't mean it's not ready for production, it just
-means it hasn't been tested by a large audience yet. The more the merrier and the faster we get to v1.0. Install it,
-open issues if you find bugs.
-
 ## Overview
+
+This revision of __docker-atlassian-jira__ will install:
+
+[JIRA 7.3.8](https://confluence.atlassian.com/jirasoftware/issues-resolved-in-7-3-8-913214559.html)
 
 ## Installation
 
@@ -86,6 +86,12 @@ Click on the <kbd>Re-Index</kbd> button.
 ## Troubleshooting
 
 For general troubleshooting information check the [Troubleshoot](troubleshoot.md) document.
+
+## Upstream Release Notes
+
+Release notes for all versions of JIRA can be viewed online:
+
+[JIRA Release Notes](https://confluence.atlassian.com/jirasoftware/jira-software-release-notes-776821069.html)
 
 ## Authors
 
