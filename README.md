@@ -73,6 +73,16 @@ failover configuration (where only a single JIRA instance is active at any time)
 This configuration requires that [Data Persistence over NFS](#data-persistence-nfs) has been configured to share JIRA
 configuration information among replicated instances.
 
+## Redeployment Index Regeneration
+
+Indexes are stored in ephemeral storage; consequently, when redeploying the application on top of existing persistent
+storage (i.e. [Data Persistence over NFS](#data-persistence-nfs)) it will be necessary to manually trigger a rebuild of
+all indexes. Log in as a user with administrative permissions, then navigate to:
+
+`Cog > System > Advanced > Indexing`
+
+Click on the <kbd>Re-Index</kbd> button.
+
 ## Troubleshooting
 
 For general troubleshooting information check the [Troubleshoot](troubleshoot.md) document.
