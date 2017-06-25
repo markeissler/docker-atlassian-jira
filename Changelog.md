@@ -1,5 +1,15 @@
 # Changelog: docker-atlassian-jira
 
+## 1.0.0 / 2017-06-25
+
+Update JIRA to 7.3.8.
+
+### Short list of commit messages
+
+  * Update README to include link to upstream release notes.
+  * Update README for redeployment indexing issues.
+  * Update JIRA to 7.3.8.
+
 ## 0.11.0 / 2017-06-19
 
 Docker Swarm support! This version adds support for deployment to a cluster with a failover configuration. That is, only
