@@ -68,10 +68,10 @@ On container startup, the PCKS12 format certificate.p12 file will be converted a
 ## Docker Swarm Support
 
 While __docker-atlassian-jira__ does not support multi-node clustering it does support deployment to a cluster with a
-failover configuration (where only a single JIRA instance is active at a any time).
+failover configuration (where only a single JIRA instance is active at any time).
 
 This configuration requires that [Data Persistence over NFS](#data-persistence-nfs) has been configured to share JIRA
-configuration information among replicated instanced.
+configuration information among replicated instances.
 
 ## Troubleshooting
 
