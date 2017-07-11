@@ -83,7 +83,7 @@ if [ -f "${CERTIFICATE}" ] || [ -f "${CERTIFICATE}.p12" ]; then
   #
   # This will redirect all traffic to use HTTPS urls.
   #
-  # Location: ${JIRA_INSTALL}/WEB-INF/web.xml
+  # Location: ${JIRA_INSTALL}/atlassian-jira/WEB-INF/web.xml
   # <!--
   # <security-constraint>
   #   <web-resource-collection>
