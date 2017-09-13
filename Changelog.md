@@ -1,5 +1,9 @@
 # Changelog: docker-atlassian-jira
 
+## 1.5.0 / 2017-09-13
+
+Update JIRA to 7.4.4.
+
 ## 1.4.0 / 2017-09-13
 
 Update JIRA to 7.4.3.
