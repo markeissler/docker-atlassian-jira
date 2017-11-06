@@ -1,11 +1,11 @@
 FROM openjdk:8
-MAINTAINER Mark Eissler
+LABEL maintainer="Mark Eissler <moe@markeissler.org>"
 
 # Configuration variables.
 ENV JIRA_HOME     /var/atlassian/jira
 ENV JIRA_RUNTIME  /var/atlassian/jira_runtime
 ENV JIRA_INSTALL  /opt/atlassian/jira
-ENV JIRA_VERSION  7.5.0
+ENV JIRA_VERSION  7.5.1
 
 ENV JAVA_CACERTS  $JAVA_HOME/jre/lib/security/cacerts
 ENV CERTIFICATE   $JIRA_HOME/certificate
@@ -15,7 +15,7 @@ ENV CERTIFICATE   $JIRA_HOME/certificate
 RUN set -x \
     && apt-get update --quiet \
     && apt-get install --quiet --yes --no-install-recommends xmlstarlet \
-    && apt-get install --quiet --yes --no-install-recommends -t jessie-backports libtcnative-1 \
+    && apt-get install --quiet --yes --no-install-recommends libtcnative-1 \
     && apt-get clean \
     && mkdir -p                "${JIRA_HOME}" \
     && mkdir -p                "${JIRA_HOME}/caches/indexes" \
