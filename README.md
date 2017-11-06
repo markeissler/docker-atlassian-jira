@@ -7,7 +7,7 @@ container to support issue and project tracking for software teams.
 
 This revision of __docker-atlassian-jira__ will install:
 
-[JIRA 7.5.0](https://confluence.atlassian.com/jirasoftware/issues-resolved-in-7-5-0-934719447.html)
+[JIRA 7.5.1](https://confluence.atlassian.com/jirasoftware/issues-resolved-in-7-5-1-939495773.html)
 
 ## Installation
 
