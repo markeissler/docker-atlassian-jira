@@ -5,7 +5,7 @@ LABEL maintainer="Mark Eissler <moe@markeissler.org>"
 ENV JIRA_HOME     /var/atlassian/jira
 ENV JIRA_RUNTIME  /var/atlassian/jira_runtime
 ENV JIRA_INSTALL  /opt/atlassian/jira
-ENV JIRA_VERSION  7.5.3
+ENV JIRA_VERSION  7.5.4
 
 ENV JAVA_CACERTS  $JAVA_HOME/jre/lib/security/cacerts
 ENV CERTIFICATE   $JIRA_HOME/certificate
