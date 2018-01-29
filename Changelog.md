@@ -1,5 +1,16 @@
 # Changelog: docker-atlassian-jira
 
+## 1.15.0 / 2018-01-28
+
+Update JIRA to 7.7.0
+
+### Minor version increment!
+
+Since this is a Minor version increment be sure to review the release notes and upgrade notes:
+
+  * [JIRA Software 7.7.x release notes](https://confluence.atlassian.com/jirasoftware/jira-software-7-7-x-release-notes-941594462.html)
+  * [JIRA Software 7.7.x upgrade notes](https://confluence.atlassian.com/jirasoftware/jira-software-7-7-x-upgrade-notes-941594485.html)
+
 ## 1.14.0 / 2018-01-28
 
 Update JIRA to 7.6.3
