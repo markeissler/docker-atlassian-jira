@@ -1,5 +1,9 @@
 # Changelog: docker-atlassian-jira
 
+## 1.13.0 / 2018-01-28
+
+Update JIRA to 7.6.2
+
 ## 1.12.0 / 2018-01-28
 
 Update JIRA to 7.6.1
